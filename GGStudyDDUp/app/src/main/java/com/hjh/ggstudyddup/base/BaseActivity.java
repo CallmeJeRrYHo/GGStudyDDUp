@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 
 /**
+ * base
  * Created by HJH on 2017/6/28.
  */
 
