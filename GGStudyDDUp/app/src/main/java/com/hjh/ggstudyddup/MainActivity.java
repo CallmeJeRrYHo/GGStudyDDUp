@@ -29,6 +29,8 @@ public class MainActivity extends BaseActivity<MainPresenter, MainContract.MainV
         super.onCreate(savedInstanceState);
     }
 
+
+
     @Override
     protected void initView() {
         mPresenter.testData();
