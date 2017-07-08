@@ -25,5 +25,12 @@
             android:text="greenTest"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+        <TextView
+            android:gravity="center"
+            android:padding="20dp"
+            android:id="@+id/tv_test"
+            android:text="testGetData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </LinearLayout>
