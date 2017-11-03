@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.hjh.ggstudyddup.base.BaseActivity;
 import com.hjh.ggstudyddup.contract.MainContract;
 import com.hjh.ggstudyddup.greendao.GreenDaoActivity;
+import com.hjh.ggstudyddup.login.LoginActivity;
 import com.hjh.ggstudyddup.model.MainModel;
 import com.hjh.ggstudyddup.popup.PopupActivity;
 import com.hjh.ggstudyddup.presenter.MainPresenter;
@@ -23,6 +24,8 @@ public class MainActivity extends BaseActivity<MainPresenter, MainContract.MainV
     TextView mTvGreenDao;
     @BindView(R.id.tv_test)
     TextView mTvTest;
+    @BindView(R.id.tv_login)
+    TextView mTvLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +33,10 @@ public class MainActivity extends BaseActivity<MainPresenter, MainContract.MainV
     }
 
 
-
     @Override
     protected void initView() {
         mPresenter.testData();
+        mPresenter.sleep();
     }
 
     @Override
@@ -67,5 +70,10 @@ public class MainActivity extends BaseActivity<MainPresenter, MainContract.MainV
     @OnClick(R.id.tv_test)
     public void onViewClicked() {
         mPresenter.testData();
+    }
+
+    @OnClick(R.id.tv_login)
+    public void onLogin() {
+        gotoActivity(LoginActivity.class);
     }
 }

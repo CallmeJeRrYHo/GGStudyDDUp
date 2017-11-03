@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.hjh.ggstudyddup.utils.ActivityTool;
+
 import butterknife.ButterKnife;
 
 /**
@@ -20,11 +22,11 @@ public abstract class BaseActivity<P extends BasePresenter,V extends BaseView> e
         setContentView(getContentViewId());
         ButterKnife.bind(this);
         mPresenter=getPresenter();
-        mPresenter.attachView((V)this);
+        if (mPresenter!=null)
+            mPresenter.attachView((V)this);
         initView();
+        ActivityTool.addActivity(this);
     }
-
-    protected abstract void initView();
 
     /**
      * 返回view id
@@ -37,6 +39,8 @@ public abstract class BaseActivity<P extends BasePresenter,V extends BaseView> e
      * @return
      */
     protected abstract P getPresenter();
+
+    protected abstract void initView();
 
     /**
      * 跳转到指定act
@@ -58,7 +62,8 @@ public abstract class BaseActivity<P extends BasePresenter,V extends BaseView> e
 
     @Override
     protected void onDestroy() {
-        mPresenter.detachView();
+        if (mPresenter!=null)
+            mPresenter.detachView();
         super.onDestroy();
 
     }

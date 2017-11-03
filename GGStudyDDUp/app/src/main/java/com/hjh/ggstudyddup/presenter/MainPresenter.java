@@ -19,4 +19,8 @@ public class MainPresenter extends BasePresenter<MainContract.MainView> implemen
     public void testData() {
         mView.log("success");
     }
+
+    @Override
+    public void sleep() {
+    }
 }

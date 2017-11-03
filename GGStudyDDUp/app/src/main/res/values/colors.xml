@@ -3,4 +3,14 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="theme_color">#3F51B5</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="black">#000000</color>
+    <color name="hot_pink">#FD4C5B</color>
+    <color name="a5">#A5A5A5</color>
+    <color name="_8c">#8C8C8C</color>
+    <color name="e">#EEEEEE</color>
+    <color name="white">#ffffff</color>
+    <color name="_9">#999999</color>
 </resources>
