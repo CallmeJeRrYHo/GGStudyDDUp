@@ -91,7 +91,7 @@ public class CommonPopupWindow extends PopupWindow {
             window.setAttributes(layoutParams);
             popupWindow.setOutsideTouchable(mTouchable);
             popupWindow.setFocusable(mTouchable);
-            popupWindow.setBackgroundDrawable(new ColorDrawable(Color.YELLOW));
+            popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             if (isShowAnima)
                 popupWindow.setAnimationStyle(mStyleId);
             return popupWindow;
