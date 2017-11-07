@@ -5,7 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.hjh.ggstudyddup.di.component.ActivityComponent;
+import com.hjh.ggstudyddup.di.component.DaggerActivityComponent;
+import com.hjh.ggstudyddup.di.module.ActivityModule;
 import com.hjh.ggstudyddup.utils.ActivityTool;
+
+import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 
@@ -15,18 +20,32 @@ import butterknife.ButterKnife;
  */
 
 public abstract class BaseActivity<P extends BasePresenter,V extends BaseView> extends AppCompatActivity implements BaseView{
+    @Inject
     protected P mPresenter;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getContentViewId());
         ButterKnife.bind(this);
-        mPresenter=getPresenter();
+        initComponent();
         if (mPresenter!=null)
             mPresenter.attachView((V)this);
         initView();
         ActivityTool.addActivity(this);
     }
+
+    protected ActivityComponent getActivityComponent(){
+        return DaggerActivityComponent.builder()
+                .appComponent(((BaseAPP) getApplication()).getAppComponent())
+                .activityModule(new ActivityModule(this))
+                .build();
+    }
+
+    /**
+     * 开始注入component
+     */
+    protected abstract void initComponent();
+
 
     /**
      * 返回view id
@@ -34,11 +53,6 @@ public abstract class BaseActivity<P extends BasePresenter,V extends BaseView> e
      */
     protected abstract int getContentViewId();
 
-    /**
-     * 返回p层
-     * @return
-     */
-    protected abstract P getPresenter();
 
     protected abstract void initView();
 

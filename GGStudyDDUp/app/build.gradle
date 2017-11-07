@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.butterknife'
 apply plugin: 'org.greenrobot.greendao' // apply plugin
+apply plugin: 'android-apt'
+
 android {
     compileSdkVersion 24
     buildToolsVersion "25.0.0"
@@ -12,6 +14,10 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -24,6 +30,7 @@ greendao {
     daoPackage 'com.hjh.greentest'
     targetGenDir 'src/main/java'
 }
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -32,11 +39,23 @@ dependencies {
     // add library
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.18'
     compile 'org.greenrobot:greendao:3.2.2'
+    //butterknife
     compile 'com.jakewharton:butterknife:8.6.0'
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:support-v4:26.0.0-alpha1'
     compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
     testCompile 'junit:junit:4.12'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
+    compile 'com.jakewharton:butterknife-compiler:8.6.0'
+    //使用APT生成工具，生成需要的DI代码
+    provided 'com.google.dagger:dagger-compiler:2.5'
+    //JSR250的jar包，使用这个和使用glassFish的那个一样，仅为了使用@Inject 和@Named注解
+    provided 'javax.annotation:jsr250-api:1.0'
+    //Dagger2 的依赖
+    compile 'com.google.dagger:dagger:2.5'
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    compile 'io.reactivex.rxjava2:rxjava:2.1.6'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
 }

@@ -17,7 +17,8 @@ import android.widget.TextView;
 
 import com.hjh.ggstudyddup.R;
 import com.hjh.ggstudyddup.base.BaseActivity;
-import com.hjh.ggstudyddup.base.BasePresenter;
+import com.hjh.ggstudyddup.login.contract.LoginContract;
+import com.hjh.ggstudyddup.login.presenter.LoginPresenter;
 import com.hjh.ggstudyddup.utils.RxAnimationTool;
 import com.hjh.ggstudyddup.view.DialogSureCancel;
 
@@ -25,7 +26,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends BaseActivity<LoginPresenter,LoginContract.LoginView> {
 
     @BindView(R.id.logo)
     ImageView mLogo;
@@ -108,15 +109,16 @@ public class LoginActivity extends BaseActivity {
         return R.layout.activity_login;
     }
 
-    @Override
-    protected BasePresenter getPresenter() {
-        return null;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
+    }
+
+    @Override
+    protected void initComponent() {
+        getActivityComponent().inject(this);
     }
 
     @OnClick(R.id.btn_login)

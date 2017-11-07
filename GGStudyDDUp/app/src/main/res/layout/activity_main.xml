@@ -8,36 +8,40 @@
     tools:context="com.hjh.ggstudyddup.MainActivity">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/tv_popup"
-        android:gravity="center"
-        android:padding="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="PopupWindow"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
         <TextView
+            android:id="@+id/tv_popup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="20dp"
+            android:text="PopupWindow"/>
+
+        <TextView
             android:id="@+id/tv_green_dao"
-            android:text="greenTest"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="20dp"
+            android:text="greenTest"/>
+
+        <TextView
             android:id="@+id/tv_test"
-            android:text="testGetData"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="20dp"
+            android:text="testGetData"/>
+
+        <TextView
             android:id="@+id/tv_login"
-            android:text="login"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="login"/>
     </LinearLayout>
 </LinearLayout>

@@ -9,7 +9,6 @@ import com.hjh.ggstudyddup.base.BaseActivity;
 import com.hjh.ggstudyddup.contract.MainContract;
 import com.hjh.ggstudyddup.greendao.GreenDaoActivity;
 import com.hjh.ggstudyddup.login.LoginActivity;
-import com.hjh.ggstudyddup.model.MainModel;
 import com.hjh.ggstudyddup.popup.PopupActivity;
 import com.hjh.ggstudyddup.presenter.MainPresenter;
 
@@ -32,6 +31,11 @@ public class MainActivity extends BaseActivity<MainPresenter, MainContract.MainV
         super.onCreate(savedInstanceState);
     }
 
+    @Override
+    protected void initComponent() {
+        getActivityComponent().add(this);
+    }
+
 
     @Override
     protected void initView() {
@@ -42,11 +46,6 @@ public class MainActivity extends BaseActivity<MainPresenter, MainContract.MainV
     @Override
     protected int getContentViewId() {
         return R.layout.activity_main;
-    }
-
-    @Override
-    protected MainPresenter getPresenter() {
-        return new MainPresenter(new MainModel());
     }
 
 
@@ -69,6 +68,7 @@ public class MainActivity extends BaseActivity<MainPresenter, MainContract.MainV
 
     @OnClick(R.id.tv_test)
     public void onViewClicked() {
+        Log.d("1111","1111");
         mPresenter.testData();
     }
 
